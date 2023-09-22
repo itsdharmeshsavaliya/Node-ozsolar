@@ -7,13 +7,13 @@ export { default as PVModelSchema } from "./pvmodel.js";
 export { default as CustomerSchema } from "./customer.js";
 export { default as ClientSchema } from "./client.js";
 export { default as SpecialSchema } from "./special.js";
-export { default as BrandSchema } from "./brand.js"; 
+export { default as BrandSchema } from "./brand.js";
 export { default as TestimonialSchema } from "./testimonial.js";
 export { default as GallerySchema } from "./gallery.js";
 export { default as GalleryImageSchema } from "./galleryImage.js";
 export { default as PackageTypeSchema } from "./packageType.js";
 export { default as PackageSchema } from "./package.js";
-export {default as LogoSchema } from "./logo.js";
+export { default as LogoSchema } from "./logo.js";
 export { default as ContactSchema } from "./contact.js";
 export { default as SocialMediaSchema } from "./socialMedia.js";
 export { default as EmailConfigurationSchema } from "./emailConfiguration.js";
@@ -22,4 +22,8 @@ export { default as SubMenuSchema } from "./subMenu.js";
 export { default as BannerSchema } from "./banner.js";
 export { default as EmailTemplateSchema } from "./emailTemplate.js";
 export { default as ContactInquarySchema } from "./contactInquary.js";
- 
+
+export { default as CategorySchema } from './category.js'
+export { default as SubCategorySchema } from './subCategory.js'
+export { default as ProductSchema } from './product.js'
+export {default as SubCategoryProductSchema} from './subCatProducts.js'

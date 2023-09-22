@@ -8,7 +8,7 @@ export { default as clientController } from "./clientcontroller";
 export { default as SpecialController } from "./specialcontroller";
 export { default as BrandController } from "./brandcontroller";
 export { default as TestimonialController } from "./testimonialcontroller";
-export { default as GalleryController } from "./gallerycontroller"; 
+export { default as GalleryController } from "./gallerycontroller";
 export { default as GalleryImageController } from "./galleryImagecontroller";
 export { default as packageTypeController } from "./packageTypecontroller";
 export { default as PackageController } from "./packagecontroller";
@@ -20,3 +20,8 @@ export { default as MenuController } from "./menucontroller";
 export { default as BannerController } from "./bannercontroller";
 export { default as EmailTemplateController } from "./emailTemplatecontroller";
 export { default as ContactInquaryController } from "./contactInquarycontroller";
+
+export { default as CategoryController } from "./categorycontroller";
+export { default as SubCategoryController } from "./subCategorycontroller";
+export { default as ProductController } from "./productcontroller"
+export { default as SubCategoryProductController } from './subCategoryProductsController'

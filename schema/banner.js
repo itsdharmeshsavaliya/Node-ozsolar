@@ -30,7 +30,6 @@ const BannerSchema = new mongoose.Schema({
         }
      },
     isActive: { type: Boolean, required: false, default: true }
-    
 },{ timestamps: true, toJSON:{getters:true}, id:false });
 
 export default mongoose.model('Banner',BannerSchema, 'Banner');

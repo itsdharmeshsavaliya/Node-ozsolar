@@ -1,8 +1,9 @@
-import { MAIL_ID, MAIL_PASSWORD } from "../config";
-import { ContactInquary, EmailTemplate } from "../model";
-import { EmailTemplateSchema } from "../schema";
+import PackagesInquary from "../schema/PackagesInquary";
+import product from "../schema/product";
 import CustomErrorHandler from "../services/CustomErrorHandler";
 import { ContactInquaryValidator } from "../validators";
+import { EmailTemplateSchema } from "../schema";
+import { MAIL_ID, MAIL_PASSWORD } from "../config";
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
@@ -12,11 +13,13 @@ const transporter = nodemailer.createTransport({
     pass: MAIL_PASSWORD,
   },
 });
+
+// Create an email template function with dynamic data
 async function createEmailTemplate(data) {
   let emailTemplate = await EmailTemplateSchema.findOne({});
   let InquiryToUser = await JSON.parse(
     JSON.stringify(emailTemplate)
-  ).InquiryToUser.toString();
+  ).PackageInquiryToUser.toString();
   InquiryToUser = InquiryToUser.replace(/\[SITENAME\]/g, "ozsolarneeds");
   InquiryToUser = InquiryToUser.toString().replace(
     /\[SITELOGO\]/g,
@@ -29,6 +32,7 @@ async function createEmailTemplate(data) {
   InquiryToUser = InquiryToUser.replace(/\[MESSAGE\]/g, data.message);
   InquiryToUser = InquiryToUser.replace(/\[ADDRESS\]/g, data.address);
   InquiryToUser = InquiryToUser.replace(/\[POSTALCODE\]/g, data.postalCode);
+  InquiryToUser = InquiryToUser.replace(/\[SystemSize\]/g, data.SystemSize);
   InquiryToUser = InquiryToUser.replace(/\[COPYRIGHTYEAR\]/g, "2023");
 
   return InquiryToUser;
@@ -50,32 +54,34 @@ async function sendEmail(data) {
     console.error("Error sending email: ", error);
   }
 }
-
-const contactInquarycontroller = {
-  async contactInquary(req, res, next) {
+const Packagescontroller = {
+  async PackagesInquary(req, res, next) {
     try {
       const { error } =
-        ContactInquaryValidator.ContactInquaryValidatorSchema.validate(
+        ContactInquaryValidator.PackagesinquaryValidatorSchema.validate(
           req.body
         );
       if (error) {
         return next(error);
       }
       let document;
-      let { name, email, mobile_no, postalCode, address, message } = req.body;
+      let { name, email, mobile_no, postalCode, address, message, SystemSize } =
+        req.body;
 
       try {
-        document = await ContactInquary.create({
+        document = await PackagesInquary.create({
           name,
           email,
           mobile_no,
           postalCode,
           address,
           message,
+          SystemSize,
         });
-        res
-          .status(200)
-          .json({ status: 1, message: "contact created successfully" });
+        res.status(200).json({
+          status: 1,
+          message: "Packages inquary created successfully",
+        });
         await sendEmail(req.body);
       } catch (err) {
         return next(err);
@@ -87,7 +93,7 @@ const contactInquarycontroller = {
   async all(req, res, next) {
     let document;
     try {
-      document = await ContactInquary.find();
+      document = await PackagesInquary.find();
     } catch (err) {
       return next(err);
     }
@@ -102,7 +108,7 @@ const contactInquarycontroller = {
         return next(error);
       }
       let contactId = req.params.id;
-      let document = await ContactInquary.delete(contactId);
+      let document = await PackagesInquary.findByIdAndRemove(contactId);
       if (!document) return next(CustomErrorHandler.somethingwrong());
       return res
         .status(200)
@@ -122,7 +128,7 @@ const contactInquarycontroller = {
       const contactId = req.params.id;
       let document;
       try {
-        document = await ContactInquary.findById(contactId);
+        document = await PackagesInquary.findById(contactId);
       } catch (err) {
         return next(CustomErrorHandler.servererror());
       }
@@ -133,4 +139,4 @@ const contactInquarycontroller = {
   },
 };
 
-export default contactInquarycontroller;
+export default Packagescontroller;

@@ -5,7 +5,7 @@ Joi.objectId = JoiObjectid(Joi);
 
 const BannerValidatorSchema = Joi.object({
     sortOrder: Joi.string().required().label("sortOrder").error(new Error('Please enter proper sortOrder!')),
-    menuName: Joi.objectId().required().label("menuName").error(new Error('Please enter correct menuName!')),
+    menuName: Joi.string().required().label("menuName").error(new Error('Please enter correct menuName!')),
     bannerType: Joi.string().required().label("bannerType").error(new Error('Please enter correct bannerType!')),
     title:Joi.string().required().label("title").error(new Error('Please enter correct title!')),
     slugname:Joi.string().label("slugname").error(new Error('Please enter correct slugname!')),
