@@ -21,6 +21,7 @@ const MenuSchema = new mongoose.Schema(
     },
     sortOrder: { type: Number, required: true },
     slug: { type: String, required: true },
+    Description: { type: String, required: true },
     menu_URL_unique_key: { type: String, required: false },
     CMS: { type: mongoose.Schema.Types.ObjectId, required: false },
     category: { type: mongoose.Schema.Types.ObjectId, required: false },
