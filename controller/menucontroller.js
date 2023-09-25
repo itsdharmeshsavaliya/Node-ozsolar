@@ -17,6 +17,7 @@ const menucontroller = {
       let {
         parentId,
         menuName,
+        Description,
         menuType,
         cms,
         sortOrder,
@@ -54,13 +55,11 @@ const menucontroller = {
               }
             );
             console.log(document);
-            return res
-              .status(200)
-              .json({
-                status: 1,
-                message: "menu created successfully",
-                document: document,
-              });
+            return res.status(200).json({
+              status: 1,
+              message: "menu created successfully",
+              document: document,
+            });
           }
           if (menuType === 3) {
             document = await Menu.create({
@@ -68,6 +67,7 @@ const menucontroller = {
               name: menuName,
               menuName,
               menuType,
+              Description,
               CMS: cms,
               sortOrder,
               slug: slugmenu ? slug(slugmenu) : slug(menuName),
@@ -91,6 +91,7 @@ const menucontroller = {
             parentId,
             name: menuName,
             menuName,
+            Description,
             menuType,
             CMS: cms,
             sortOrder,
