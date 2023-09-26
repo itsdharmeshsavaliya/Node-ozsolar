@@ -1,4 +1,5 @@
-import express from "express";
+const express = require("express");
+
 const router = express.Router();
 import {
   BannerController,
@@ -206,7 +207,7 @@ router.delete(
 );
 router.get("/admin/emailtemplate/:id", [auth], EmailTemplateController.fetch);
 
-router.post("/packagescontroller",  Packagescontroller.PackagesInquary);
+router.post("/packagescontroller", Packagescontroller.PackagesInquary);
 router.get("/packagesinquary", Packagescontroller.all);
 router.delete("/admin/packagesinquary/:id", [auth], Packagescontroller.remove);
 router.get("/admin/packagesinquary/:id", [auth], Packagescontroller.fetch);
