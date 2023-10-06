@@ -3,7 +3,7 @@ import { ContactInquary, EmailTemplate } from "../model";
 import { EmailTemplateSchema } from "../schema";
 import CustomErrorHandler from "../services/CustomErrorHandler";
 import { ContactInquaryValidator } from "../validators";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

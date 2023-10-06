@@ -1,10 +1,13 @@
-import mongoose from "mongoose";
-import { MONGO_URI } from "../config/index.js";
-
-mongoose.connect(MONGO_URI,{useNewUrlParser:true, useUnifiedTopology:true})
-const db = mongoose.connection;
-db.on('error',console.error.bind(console,'connection error'))
-db.once('open',()=>{
-    console.log('DB connected')
-})
-
+import mongoose from 'mongoose';
+import { MONGO_URI } from './../config';
+const connectDB = async() => {
+    try {
+        mongoose.set('strictQuery', false);
+        const conn = await mongoose.connect(MONGO_URI);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+};
+export { connectDB };

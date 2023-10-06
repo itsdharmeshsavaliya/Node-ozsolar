@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r esm index.js",
-    "start": "node  index.js"
-  },
+    "olddev": "nodemon -r esm index.js",
+    "dev": "nodemon --exec babel-node index.js",
+    "start": "NODE_ENV=production node -r esm index.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -26,5 +27,12 @@
     "nodemailer": "^6.9.5",
     "nodemon": "^3.0.1",
     "slug": "^8.2.3"
-  }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^3.0.1"
+}
 }

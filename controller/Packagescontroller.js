@@ -4,7 +4,7 @@ import CustomErrorHandler from "../services/CustomErrorHandler";
 import { ContactInquaryValidator } from "../validators";
 import { EmailTemplateSchema } from "../schema";
 import { MAIL_ID, MAIL_PASSWORD } from "../config";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

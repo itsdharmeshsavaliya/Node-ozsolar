@@ -1,0 +1,14 @@
+OZ-solar
+
+cloud.linode.com
+username - setblue
+password - $(FL)e(SL)T(TL)@!52!@
+
+root
+ssh root@139.144.53.96
+root password - ozsolar@#1234#
+
+folder
+var/www --> api.ozsolar.com (backend-api)
+var/www --> ozsolar.com --> html (frontend-website(build ni zip upload kareli 6e))
+var/www --> admin.ozsolar.com --> html (frontend-admin(build ni zip upload kareli 6e))
